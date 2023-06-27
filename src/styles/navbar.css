@@ -11,8 +11,11 @@
   padding: 10px 20px;
 }
 
-.navbar-left img {
-  height: 40px;
+.navbar-left {
+  font-family: "Inter", sans-serif;
+  letter-spacing: -0.05em;
+  font-weight: 700;
+  font-size: 1.1rem;
 }
 
 .navbar-right .navbar-button {

@@ -6,6 +6,7 @@ import formatNumber from "../components/formatNumber";
 import SendStreamPopup from "../components/SendStreamPopup";
 import { useConnectModal } from "@rainbow-me/rainbowkit";
 import { useAccount } from "wagmi";
+import AllStreamOfProfile from "../components/AllStreamOfProfile";
 
 function SingleProfile() {
   const { address } = useAccount();
@@ -17,6 +18,7 @@ function SingleProfile() {
   useEffect(() => {
     if (location.state.profile) {
       setProfile(location.state.profile);
+      console.log(location.state.profile);
     }
   }, [location.state?.profile]);
 
@@ -102,8 +104,15 @@ function SingleProfile() {
             </li>
           </ul>
           {display === "Posts" && <Feed id={profile.id} />}
+          {display === "Streams" && <AllStreamOfProfile />}
         </div>
-        {isOpen && <SendStreamPopup isOpen={isOpen} setIsOpen={setIsOpen} />}
+        {isOpen && (
+          <SendStreamPopup
+            isOpen={isOpen}
+            setIsOpen={setIsOpen}
+            address={profile.ownedBy}
+          />
+        )}
       </div>
     );
 }

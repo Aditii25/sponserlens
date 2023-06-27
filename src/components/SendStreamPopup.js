@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import "../styles/popup.css";
+import { CreateFlow } from "./CreateFlow";
 
-function SendStreamPopup({ isOpen, setIsOpen }) {
+function SendStreamPopup({ isOpen, setIsOpen, address }) {
   const handleOpenPopup = () => {
     setIsOpen(true);
   };
@@ -24,9 +25,8 @@ function SendStreamPopup({ isOpen, setIsOpen }) {
       {isOpen && (
         <div className="popup" onClick={handleOutsideClick}>
           <div className="popup-content" onClick={handlePopupClick}>
-            <h3>Popup Content</h3>
-            <p>This is the content of the popup.</p>
-            <button onClick={handleClosePopup}>Close</button>
+            <CreateFlow address={address} />
+            {/* <button onClick={handleClosePopup}>Close</button> */}
           </div>
         </div>
       )}
