@@ -1,0 +1,90 @@
+.dashboard-container {
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column; /* Change the direction to column */
+}
+.search-container {
+  margin: 20px 0 0 0;
+}
+h1.search-title {
+  font-size: 3rem;
+  font-weight: 700;
+  line-height: 1;
+  margin: 0;
+  padding: 0;
+  font-family: "Inter", sans-serif;
+  letter-spacing: -0.05em;
+}
+h2.leaderboard,
+h2.search-result-h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 1;
+  margin: 0;
+  padding: 0;
+  font-family: "Inter", sans-serif;
+  letter-spacing: -0.05em;
+}
+h2.leaderboard {
+  margin: 30px 0 10px 0;
+}
+h2.search-result-h2 {
+  margin: 20px 0px;
+}
+.top-navigation {
+  padding: 10px 0;
+}
+.top-navigation ul {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  max-width: 100%;
+  overflow-x: scroll;
+}
+/* Hide scrollbar for Chrome, Safari and Opera */
+.top-navigation ul::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.top-navigation ul {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+.top-navigation li {
+  min-width: max-content;
+  cursor: pointer;
+  padding: 0.225rem 0.625rem;
+  line-height: 1rem;
+  font-weight: 600;
+  font-size: 0.75rem;
+  margin-right: 10px;
+  margin-top: 0.125rem;
+  margin-bottom: 0.125rem;
+  background-color: #fff;
+  border: 1px solid rgba(226, 232, 240, 0.75);
+  border-radius: 9999px;
+}
+
+.top-navigation li:hover {
+  background-color: #f0f0f0;
+}
+.top-navigation li.active {
+  background-color: #10bb35ff;
+  color: white;
+}
+
+.content {
+  margin: 20px 0 0 0;
+  /* background-color: #fff;
+  border: 1px solid rgba(226, 232, 240, 0.75); */
+}
+
+hr {
+  margin: 30px 0px;
+  width: 100%;
+  border-top: 1px solid rgba(226, 232, 240, 0.75);
+}

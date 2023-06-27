@@ -1,13 +1,45 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import "./index.css";
+import App from "./App";
+import reportWebVitals from "./reportWebVitals";
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+import "@rainbow-me/rainbowkit/styles.css";
+
+import { getDefaultWallets, RainbowKitProvider } from "@rainbow-me/rainbowkit";
+import { configureChains, createConfig, WagmiConfig } from "wagmi";
+import { mainnet, polygon, optimism, arbitrum, zora } from "wagmi/chains";
+import { alchemyProvider } from "wagmi/providers/alchemy";
+import { publicProvider } from "wagmi/providers/public";
+
+const { chains, publicClient } = configureChains(
+  [mainnet, polygon, optimism, arbitrum, zora],
+  [
+    alchemyProvider({ apiKey: process.env.REACT_APP_ALCHEMY_ID }),
+    publicProvider(),
+  ]
+);
+
+const { connectors } = getDefaultWallets({
+  appName: "SponserLens",
+  projectId: "1f0ae8fc2902f2c98a6bc54f6f8ec319",
+  chains,
+});
+
+const wagmiConfig = createConfig({
+  autoConnect: true,
+  connectors,
+  publicClient,
+});
+
+const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <App />
+    <WagmiConfig config={wagmiConfig}>
+      <RainbowKitProvider chains={chains}>
+        <App />
+      </RainbowKitProvider>
+    </WagmiConfig>
   </React.StrictMode>
 );
 
