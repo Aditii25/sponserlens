@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { LensClient, development, production } from "@lens-protocol/client";
 import getPublicationThumbnail from "../getPublicationThumbnail";
 import { Link } from "react-router-dom";
+import placeholder from "../../assets/placeholder.jpg";
 
 const lensClient = new LensClient({
   environment: production,
@@ -94,7 +95,7 @@ function Feed({ id }) {
                 {post && post?.metadata?.image ? (
                   <img src={getPublicationThumbnail(post)} alt={post.id} />
                 ) : (
-                  <div className="no-image-post" />
+                  <img src={placeholder} alt={post.id} />
                 )}
               </div>
               <div className="post-info">

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import "../../styles/leaderboardapi.css";
 import { LensClient, development, production } from "@lens-protocol/client";
 import { useNavigate } from "react-router-dom";
+import placeholder from "../../assets/profile_placeholder.png";
 
 function LeaderboardApi({ sortCriteria }) {
   const navigate = useNavigate();
@@ -65,7 +66,14 @@ function LeaderboardApi({ sortCriteria }) {
       }
     }
   };
-
+  const getProfileImage = (link) => {
+    const isIPFSLink = link?.startsWith("ipfs://");
+    const imageSource = isIPFSLink
+      ? `https://ipfs.io/ipfs/${link?.split("://")[1]}`
+      : link;
+    if (imageSource) return imageSource;
+    else return placeholder;
+  };
   return (
     <div>
       <div className="grid-container">
@@ -77,7 +85,10 @@ function LeaderboardApi({ sortCriteria }) {
           >
             <div className="grid-item-top">
               <div className="profile-image">
-                <img src={profile.picture?.original?.url} alt={profile.name} />
+                <img
+                  src={getProfileImage(profile.picture?.original?.url)}
+                  alt={profile.name}
+                />
               </div>
               <div className="profile-info">
                 <span className="profile-id">{profile.id}</span>

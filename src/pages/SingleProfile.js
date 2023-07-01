@@ -7,6 +7,7 @@ import SendStreamPopup from "../components/SendStreamPopup";
 import { useConnectModal } from "@rainbow-me/rainbowkit";
 import { useAccount } from "wagmi";
 import AllStreamOfProfile from "../components/AllStreamOfProfile";
+import placeholder from "../assets/profile_placeholder_single_profile.png";
 
 function SingleProfile() {
   const { address } = useAccount();
@@ -39,7 +40,14 @@ function SingleProfile() {
     }
     setIsOpen(true);
   };
-
+  const getProfileImage = (link) => {
+    const isIPFSLink = link?.startsWith("ipfs://");
+    const imageSource = isIPFSLink
+      ? `https://ipfs.io/ipfs/${link?.split("://")[1]}`
+      : link;
+    if (imageSource) return imageSource;
+    else return placeholder;
+  };
   if (profile)
     return (
       <div className="single-profile-container">
@@ -48,7 +56,10 @@ function SingleProfile() {
         </div>
         <div className="single-profile-first">
           <div className="one">
-            <img src={profile.picture?.original?.url} alt={profile.name} />
+            <img
+              src={getProfileImage(profile.picture?.original?.url)}
+              alt={profile.name}
+            />
           </div>
           <div className="two">
             <div className="single-profile-info">
@@ -100,11 +111,13 @@ function SingleProfile() {
               className={display === "Streams" ? "active" : ""}
               onClick={() => handleSortCriteriaChange("Streams")}
             >
-              Sponsors Streams
+              Streams
             </li>
           </ul>
           {display === "Posts" && <Feed id={profile.id} />}
-          {display === "Streams" && <AllStreamOfProfile />}
+          {display === "Streams" && (
+            <AllStreamOfProfile userAddress={profile.ownedBy} />
+          )}
         </div>
         {isOpen && (
           <SendStreamPopup

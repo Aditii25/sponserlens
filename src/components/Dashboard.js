@@ -2,8 +2,11 @@ import React, { useEffect, useState } from "react";
 import "../styles/dashboard.css";
 import LeaderboardApi from "./queries/LeaderboardApi";
 import Search from "./queries/Search";
+import placeholder from "../assets/profile_placeholder.png";
+import { useNavigate } from "react-router-dom";
 
 const Dashboard = () => {
+  const navigate = useNavigate();
   const [sortCriteria, setSortCriteria] = useState(
     localStorage.getItem("sortCriteria") || "MOST_FOLLOWERS"
   );
@@ -15,7 +18,14 @@ const Dashboard = () => {
     setSortCriteria(criteria);
     localStorage.setItem("sortCriteria", criteria);
   };
-
+  const getProfileImage = (link) => {
+    const isIPFSLink = link?.startsWith("ipfs://");
+    const imageSource = isIPFSLink
+      ? `https://ipfs.io/ipfs/${link?.split("://")[1]}`
+      : link;
+    if (imageSource) return imageSource;
+    else return placeholder;
+  };
   useEffect(() => {
     const storedSortCriteria = localStorage.getItem("sortCriteria");
     if (storedSortCriteria) {
@@ -39,17 +49,36 @@ const Dashboard = () => {
       {searchQuery ? (
         <div className="content">
           {/* Search results  */}
-          {<h2 className="search-result-h2">Search Results</h2>}
+          {
+            <h2 className="search-result-h2">
+              Search Results
+              <span
+                style={{
+                  marginLeft: "20px",
+                  fontWeight: "400",
+                  textTransform: "capitalize",
+                }}
+              >
+                "{searchQuery}"
+              </span>
+            </h2>
+          }
 
           {searchResults.length > 0 && searchOver === "found" && (
             <>
               <div className="grid-container">
                 {searchResults.map((profile, index) => (
-                  <div className="grid-item" key={index}>
+                  <div
+                    className="grid-item"
+                    key={index}
+                    onClick={() =>
+                      navigate("/user", { state: { profile: profile } })
+                    }
+                  >
                     <div className="grid-item-top">
                       <div className="profile-image">
                         <img
-                          src={profile.picture?.original?.url}
+                          src={getProfileImage(profile.picture?.original?.url)}
                           alt={profile.name}
                         />
                       </div>

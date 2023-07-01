@@ -82,50 +82,65 @@ export const CreateFlow = ({ address }) => {
   };
 
   return (
-    <div>
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        width: "100%",
+      }}
+    >
       <h2>Send Stream</h2>
-      <div className="send-stream-inputs">
-        <div className="input-container">
-          <input
-            className="send_stream"
-            name="recipient"
-            value={address}
-            disabled
-            onChange={handleRecipientChange}
-            placeholder="Enter recipient address"
-          ></input>
-        </div>
-        <div className="input-container">
-          <input
-            className="send_stream"
-            name="flowRate"
-            value={flowRate}
-            onChange={handleFlowRateChange}
-            placeholder="Enter a flowRate in wei/second"
-          ></input>
-        </div>
-        <button
+      {/* <div className="send-stream-inputs"> */}
+      <div className="input-container">
+        <input
           className="send_stream"
-          onClick={() => {
-            setIsButtonLoading(true);
-            createNewFlow(address, flowRate);
-            setTimeout(() => {
-              setIsButtonLoading(false);
-            }, 1000);
-          }}
-        >
-          Send Stream
-        </button>
+          name="recipient"
+          value={address}
+          disabled
+          onChange={handleRecipientChange}
+          placeholder="Enter recipient address"
+        ></input>
       </div>
-
+      <div className="input-container">
+        <input
+          className="send_stream"
+          name="token"
+          value={"fDAIx"}
+          disabled
+          placeholder="Enter recipient address"
+        ></input>
+      </div>
+      <div className="input-container">
+        <input
+          className="send_stream"
+          name="flowRate"
+          value={flowRate}
+          onChange={handleFlowRateChange}
+          placeholder="Enter a flowRate in wei/second"
+        ></input>
+      </div>
       <div className="description">
         <div className="calculation">
           <p>Your flow will be equal to:</p>
           <p>
-            <b>${flowRateDisplay !== " " ? flowRateDisplay : 0}</b> DAIx/month
+            <b>${flowRateDisplay !== " " ? flowRateDisplay : 0}</b> fDAIx/month
           </p>
         </div>
       </div>
+      <button
+        className="send_stream"
+        onClick={() => {
+          setIsButtonLoading(true);
+          createNewFlow(address, flowRate);
+          setTimeout(() => {
+            setIsButtonLoading(false);
+          }, 1000);
+        }}
+      >
+        Send Stream
+      </button>
     </div>
+    // </div>
   );
 };

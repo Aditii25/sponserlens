@@ -3,10 +3,15 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
-
+import merge from "lodash.merge";
 import "@rainbow-me/rainbowkit/styles.css";
 
-import { getDefaultWallets, RainbowKitProvider } from "@rainbow-me/rainbowkit";
+import {
+  getDefaultWallets,
+  RainbowKitProvider,
+  lightTheme,
+  Theme,
+} from "@rainbow-me/rainbowkit";
 import { configureChains, createConfig, WagmiConfig } from "wagmi";
 import {
   mainnet,
@@ -27,6 +32,11 @@ const { chains, publicClient } = configureChains(
     publicProvider(),
   ]
 );
+const myTheme = merge(lightTheme(), {
+  colors: {
+    accentColor: "#10bb35ff",
+  },
+});
 
 const { connectors } = getDefaultWallets({
   appName: "SponserLens",
@@ -44,7 +54,7 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <WagmiConfig config={wagmiConfig}>
-      <RainbowKitProvider chains={chains}>
+      <RainbowKitProvider chains={chains} theme={myTheme}>
         <App />
       </RainbowKitProvider>
     </WagmiConfig>

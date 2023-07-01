@@ -1,0 +1,78 @@
+.table {
+  margin: 1.5rem 0;
+  width: 100%;
+  margin-bottom: 80px;
+  border: 1px solid rgba(226, 232, 240, 0.75);
+  background-color: white;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+table thead th {
+  padding: 10px 0px;
+  vertical-align: inherit;
+  border-bottom: 1px solid #e0e0e0;
+  text-align: left;
+  font-size: 0.875rem;
+  font-weight: 400;
+  letter-spacing: 0.17px;
+  line-height: 1.429;
+  font-family: Walsheim, Arial;
+  color: rgba(18, 20, 30, 0.6);
+  padding: 10px 32px;
+  min-height: 0px;
+}
+table tbody tr:hover {
+  background-color: #f6f6f6;
+}
+table tbody td {
+  padding: 10px 0px;
+  vertical-align: inherit;
+  border-bottom: 1px solid rgb(224, 224, 224);
+  text-align: left;
+  font-size: 0.875rem;
+  font-weight: 400;
+  letter-spacing: 0.17px;
+  line-height: 1.429;
+  font-family: Walsheim, Arial;
+  color: rgba(18, 20, 30, 0.87);
+  padding: 5px 32px;
+  min-height: 0px;
+}
+.reciever-address {
+  text-align: center;
+  display: flex;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.reciever-address svg.send {
+  transform: rotate(-30deg);
+}
+.reciever-address svg.blockies {
+  height: 100%;
+  width: 30px;
+  border-radius: 5px;
+}
+
+.date-main {
+  display: flex;
+  flex-direction: column;
+}
+
+.date-main .date {
+  text-align: left;
+  color: rgba(18, 20, 30, 0.87);
+  font-size: 0.875rem;
+  font-weight: 400;
+  letter-spacing: 0.17px;
+  line-height: 1.429;
+  font-family: Walsheim, Arial;
+  padding: 0;
+  /*padding: 8px 32px 8px 8px; */
+  cursor: pointer;
+}

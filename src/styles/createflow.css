@@ -1,5 +1,6 @@
 .description {
-  margin-top: 3%;
+  margin: 3% 0;
+  width: 100%;
 }
 
 .mb-3 {
@@ -26,4 +27,27 @@
   margin-left: 40%;
   margin-right: 40%;
   margin-bottom: 3%;
+}
+
+.incoming-btn {
+  min-width: max-content;
+  cursor: pointer;
+  padding: 0.225rem 0.625rem;
+  line-height: 1rem;
+  font-weight: 600;
+  font-size: 0.75rem;
+  margin-right: 10px;
+  margin-top: 0.125rem;
+  margin-bottom: 0.125rem;
+  background-color: #fff;
+  border: 1px solid rgba(226, 232, 240, 0.75);
+  border-radius: 9999px;
+}
+.incoming-btn.active {
+  background-color: #10bb35ff;
+  color: white;
+}
+
+h3.all-streams {
+  margin-top: 4%;
 }
