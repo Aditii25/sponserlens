@@ -27,12 +27,6 @@ function SingleProfile() {
   const handleSortCriteriaChange = (item) => {
     setDisplay(item);
   };
-  const isIPFSLink = profile?.coverPicture?.original?.url.startsWith("ipfs://");
-  const imageSource = isIPFSLink
-    ? `https://ipfs.io/ipfs/${
-        profile?.coverPicture?.original?.url.split("://")[1]
-      }`
-    : profile?.coverPicture?.original?.url;
 
   const handleSponsorClick = async () => {
     if (!address) {
@@ -52,7 +46,12 @@ function SingleProfile() {
     return (
       <div className="single-profile-container">
         <div className="single-profile-cover">
-          {imageSource && <img src={imageSource} alt="Cover" />}
+          {profile?.coverPicture?.original?.url && (
+            <img
+              src={getProfileImage(profile?.coverPicture?.original?.url)}
+              alt="Cover"
+            />
+          )}
         </div>
         <div className="single-profile-first">
           <div className="one">

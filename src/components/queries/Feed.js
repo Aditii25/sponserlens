@@ -12,6 +12,7 @@ function Feed({ id }) {
   const [feedData, setFeedData] = useState([]);
   const [nextPageToken, setNextPageToken] = useState(null);
   const [prevPageToken, setPrevPageToken] = useState(null);
+  const [fetched, setFetched] = useState(1);
 
   useEffect(() => {
     fetchFeed();
@@ -25,6 +26,11 @@ function Feed({ id }) {
       });
       console.log(result);
       setFeedData(result.items);
+      if (result.items.length === 0) {
+        setFetched(0);
+      } else {
+        setFetched(2);
+      }
       setNextPageToken(result.pageInfo.next);
       setPrevPageToken(result.pageInfo.prev);
     } catch (error) {
@@ -181,7 +187,11 @@ function Feed({ id }) {
         </>
       ) : (
         <p>
-          {feedData.length === 0 ? "Loading feed..." : "No posts available."}
+          {fetched === 1
+            ? "Loading feed..."
+            : fetched === 0
+            ? "No posts available."
+            : null}
         </p>
       )}
     </div>
