@@ -159,3 +159,24 @@ span.profile-handle {
   font-weight: bold;
   color: #333;
 }
+
+.next-btn {
+  min-width: max-content;
+  cursor: pointer;
+  padding: 0.225rem 0.625rem;
+  line-height: 1rem;
+  font-weight: 600;
+  font-size: 0.75rem;
+  margin-right: 20px;
+  margin-top: 0.125rem;
+  margin-bottom: 0.125rem;
+  background-color: #fff;
+  border: 1px solid rgba(226, 232, 240, 0.75);
+  border-radius: 8px;
+  color: black;
+}
+
+.next-btn:hover {
+  background-color: #10bb35ff;
+  color: white;
+}

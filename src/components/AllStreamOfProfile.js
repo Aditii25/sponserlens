@@ -156,8 +156,7 @@ function AllStreamOfProfile({ userAddress }) {
                       </td>
                       <td>{ethers.utils.formatEther(item.flowRate)}</td>
                       <td>
-                        {ethers.utils.formatEther(item.stream.currentFlowRate) +
-                          metadata(item.token)}
+                        {ethers.utils.formatEther(item.stream.currentFlowRate)}
                       </td>
                       <td>
                         {item.stream.currentFlowRate > 0
@@ -220,8 +219,7 @@ function AllStreamOfProfile({ userAddress }) {
                       </td>
                       <td>{ethers.utils.formatEther(item.flowRate)}</td>
                       <td>
-                        {ethers.utils.formatEther(item.stream.currentFlowRate) +
-                          metadata(item.token)}
+                        {ethers.utils.formatEther(item.stream.currentFlowRate)}
                       </td>
                       <td>
                         {item.stream.currentFlowRate > 0
