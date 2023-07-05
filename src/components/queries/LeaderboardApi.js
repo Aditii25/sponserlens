@@ -114,20 +114,22 @@ function LeaderboardApi({ sortCriteria }) {
           </div>
         ))}
       </div>
-      <button
-        onClick={handlePrevPage}
-        disabled={!prevPageToken}
-        className="next-btn"
-      >
-        Previous Page
-      </button>
-      <button
-        onClick={handleNextPage}
-        disabled={!nextPageToken}
-        className="next-btn"
-      >
-        Next Page
-      </button>
+      <div className="buttons">
+        <button
+          onClick={handlePrevPage}
+          disabled={!prevPageToken}
+          className="next-btn"
+        >
+          Previous Page
+        </button>
+        <button
+          onClick={handleNextPage}
+          disabled={!nextPageToken}
+          className="next-btn"
+        >
+          Next Page
+        </button>
+      </div>
     </div>
   );
 }

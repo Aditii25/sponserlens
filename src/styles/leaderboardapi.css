@@ -159,7 +159,9 @@ span.profile-handle {
   font-weight: bold;
   color: #333;
 }
-
+.buttons {
+  margin: 20px 0px;
+}
 .next-btn {
   min-width: max-content;
   cursor: pointer;
@@ -167,7 +169,7 @@ span.profile-handle {
   line-height: 1rem;
   font-weight: 600;
   font-size: 0.75rem;
-  margin-right: 20px;
+  margin-right: 10px;
   margin-top: 0.125rem;
   margin-bottom: 0.125rem;
   background-color: #fff;
